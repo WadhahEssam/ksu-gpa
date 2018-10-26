@@ -3,6 +3,8 @@ import _ from 'lodash';
 import CurrentCalculation from './components/CurrentCalculation';
 import TotalCalculation from './components/TotalCalculation';
 
+const NUMBER_OF_DEFAULT_SUBJECTS = 6;
+
 class App extends Component {
 
   state = {
@@ -16,7 +18,7 @@ class App extends Component {
   componentWillMount() {
     // adding the default empty subjects
     let subjects = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < NUMBER_OF_DEFAULT_SUBJECTS; i++) {
       subjects.push({
         name: '',
         hours: '2',
@@ -40,22 +42,22 @@ class App extends Component {
         <div className="main-container" >
           {/* Hours/Gpa/Points manula input */}
           <fieldset style={{ display: 'inline'}} className="student-info" dir="rtl" >
-            <legend>الساعات / المعدل التراكمي</legend>
+            <legend>معلومات الطالب</legend>
             <table>
               <tbody>
                 <tr>
                   <td/>
-                  <td><p style={{ position: 'relative', bottom: '4px', left: '15px'}}>عدد الساعات السابقة</p></td>
+                  <td><p style={{ position: 'relative', bottom: '4px', left: '15px'}}>الساعات السابقة</p></td>
                   <td><input value={this.state.hours} onChange={(e) => {this.setState({hours: e.target.value})}} id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="gpa"} value="gpa" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'gpa'})}} /></td>
-                  <td><p>المعدل التراكمي</p></td>
-                  <td><input value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="5" /></td>
+                  <td><p>المعدل</p></td>
+                  <td><input value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="points"} value="points" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'points'})}} /></td>
-                  <td><p>النقاط التراكمية</p></td>
+                  <td><p>النقاط</p></td>
                   <td><input value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" min="1" max="200" /></td>
                 </tr>
               </tbody>
