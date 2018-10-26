@@ -6,7 +6,6 @@ import TotalCalculation from './components/TotalCalculation';
 const NUMBER_OF_DEFAULT_SUBJECTS = 6;
 
 class App extends Component {
-
   state = {
     subjects: [],
     hours: '',
@@ -16,23 +15,35 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // adding the default empty subjects
-    let subjects = [];
-    for (let i = 0; i < NUMBER_OF_DEFAULT_SUBJECTS; i++) {
-      subjects.push({
-        name: '',
-        hours: '2',
-        grade: 'A+'
-      })
+    const storageState = JSON.parse(localStorage.getItem("state"));
+    if (storageState===null) {
+      // adding the default empty subjects
+      let subjects = [];
+      for (let i = 0; i < NUMBER_OF_DEFAULT_SUBJECTS; i++) {
+        subjects.push({
+          name: '',
+          hours: '2',
+          grade: 'A+'
+        })
+      }
+      this.setState({subjects});
+    } else {
+      this.setState({
+        subjects: storageState.subjects,
+        hours: storageState.hours,
+        gpa: storageState.gpa,
+        points: storageState.points,
+        method: storageState.method
+      });
     }
-    this.setState({subjects});
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    localStorage.setItem("state", JSON.stringify(this.state));
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <div className="App">
@@ -85,8 +96,10 @@ class App extends Component {
             className="remove-button"
             onClick={() => {
               let subjects = _.cloneDeep(this.state.subjects);
-              subjects.pop();
-              this.setState({subjects: subjects});
+              if (subjects.length > 1) {
+                subjects.pop();
+                this.setState({subjects: subjects});
+              }
             }}
             >
               <img height="20" className="remove-button-logo" src="img/minus.png" alt="remove-logo" />

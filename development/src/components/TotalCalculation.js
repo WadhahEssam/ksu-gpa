@@ -22,7 +22,6 @@ class TotalCalculation extends Component {
     const oldGpa = parseFloat(this.props.state.gpa);
     const oldPoints = parseFloat(this.props.state.points);
     const oldHours = parseFloat(this.props.state.hours);
-    console.log(`${method} ${oldGpa} ${oldPoints} ${oldHours}`)
 
     for (let i = 0; i < subjects.length; i++) {
       const subjectGrade = parseFloat(Utils.getGradePoint(subjects[i].grade));

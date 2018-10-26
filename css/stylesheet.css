@@ -42,7 +42,7 @@ legend {
     /*margin-bottom: 40px ;*/
     background-color:rgba(1, 122, 174,0.7);
     border-radius:18px;
-    border:4px solid rgb(151, 149, 214) ;
+    border: 4px solid rgb(142, 140, 187);
 }
 
 #logo {
@@ -147,7 +147,7 @@ a{
         /*margin-bottom: 40px ;*/
         background-color:rgba(1, 122, 174,0.8);
         border-radius:18px;
-        border:4px solid rgb(151, 149, 214) ;
+        border: 4px solid rgb(142, 140, 187);
     }
 }
 
@@ -167,6 +167,7 @@ fieldset {
 
 .table-div {
     min-height: 200px;
+    margin-top: 17px;
 }
 
 .index {
@@ -175,7 +176,7 @@ fieldset {
 
 .buttons-div {
     margin-top: 8px;
-    margin-bottom: -22px;
+    margin-bottom: -19px;
 }
 
 .add-button {
@@ -222,4 +223,9 @@ fieldset {
 .remove-button-logo {
     position: relative;
     top: 2px;
+}
+
+.title {
+    margin-left: 3px;
+    color: #e4e4e4;
 }

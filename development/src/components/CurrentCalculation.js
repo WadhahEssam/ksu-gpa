@@ -3,11 +3,6 @@ import Utils from '../Utils';
 
 class CurrentCalculation extends Component {
 
-  state = {
-  }
-
-  componentWillUpdate() {
-  }
 
   render() {
     let sumPoints = 0;
@@ -16,7 +11,6 @@ class CurrentCalculation extends Component {
     let sumHours = 0;
 
     const { subjects } = this.props.state;
-    console.log(subjects);
     for (let i = 0; i < subjects.length; i++) {
       const subjectGrade = parseFloat(Utils.getGradePoint(subjects[i].grade));
       const subjectHours = parseFloat(subjects[i].hours);
