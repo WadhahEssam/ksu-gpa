@@ -21,6 +21,7 @@ class App extends Component {
       let subjects = [];
       for (let i = 0; i < NUMBER_OF_DEFAULT_SUBJECTS; i++) {
         subjects.push({
+          id: i,
           name: '',
           hours: '2',
           grade: 'A+',
@@ -110,6 +111,7 @@ class App extends Component {
             onClick={() => {
               let subjects = _.cloneDeep(this.state.subjects);
               subjects.push({
+                id: subjects.length,
                 name: '',
                 hours: '2',
                 grade: 'A+',

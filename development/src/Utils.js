@@ -42,6 +42,21 @@ class Utils {
     }
   }
 
+  static getSumPointsAndHours(subjects) {
+    let sumHours = 0;
+    let sumPoints = 0;
+    for (let i = 0; i < subjects.length; i++) {
+      if(!subjects[i].checked)
+        continue;
+      const subjectGrade = parseFloat(Utils.getGradePoint(subjects[i].grade));
+      const subjectHours = parseFloat(subjects[i].hours);
+      sumHours += subjectHours;
+      sumPoints += (subjectGrade * subjectHours);
+    }
+
+    return {sumHours, sumPoints};
+  }
+
 }
 
 export default Utils;

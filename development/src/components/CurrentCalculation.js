@@ -5,18 +5,10 @@ class CurrentCalculation extends Component {
 
 
   render() {
-    let sumPoints = 0;
     let statement = 'ممتاز مرتفع';
     let gpa = 5.00;
-    let sumHours = 0;
-
-    const { subjects } = this.props.state;
-    for (let i = 0; i < subjects.length; i++) {
-      const subjectGrade = parseFloat(Utils.getGradePoint(subjects[i].grade));
-      const subjectHours = parseFloat(subjects[i].hours);
-      sumHours += subjectHours;
-      sumPoints += (subjectGrade * subjectHours);
-    }
+    const sumPointsAndHours = Utils.getSumPointsAndHours(this.props.state.subjects);
+    let {sumHours, sumPoints} = sumPointsAndHours;
     gpa = sumPoints/sumHours;
     statement = Utils.getStatement(gpa);
 

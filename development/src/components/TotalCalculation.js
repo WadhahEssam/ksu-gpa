@@ -10,25 +10,21 @@ class TotalCalculation extends Component {
   }
 
   render() {
-    let sumPoints = 0;
     let statement = '-';
     let gpa = 5;
-    let sumHours = 0;
     let totalPoints = 0;
     let totalGpa = 0;
     let totalHours = 0;
 
-    const { subjects, method } = this.props.state;
-    const oldGpa = parseFloat(this.props.state.gpa);
-    const oldPoints = parseFloat(this.props.state.points);
-    const oldHours = parseFloat(this.props.state.hours);
+    const {state} = this.props;
+    const method = state.method;
+    const oldGpa = parseFloat(state.gpa);
+    const oldPoints = parseFloat(state.points);
+    const oldHours = parseFloat(state.hours);
 
-    for (let i = 0; i < subjects.length; i++) {
-      const subjectGrade = parseFloat(Utils.getGradePoint(subjects[i].grade));
-      const subjectHours = parseFloat(subjects[i].hours);
-      sumHours += subjectHours;
-      sumPoints += (subjectGrade * subjectHours);
-    }
+    const sumPointsAndHours = Utils.getSumPointsAndHours(this.props.state.subjects);
+    let {sumHours, sumPoints} = sumPointsAndHours;
+
     gpa = sumPoints/sumHours;
     statement = Utils.getStatement(gpa);
 
