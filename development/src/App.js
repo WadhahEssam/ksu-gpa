@@ -45,15 +45,37 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="App">
-          <img align="middle" id="logo" src="img/logo.png" alt="ksu-logo" />
+          <img fill="#4089A9" align="middle" id="logo" src="img/logo.svg" alt="ksu-logo" />
         </div>
     
         <div className="main-container" >
-          {/* Hours/Gpa/Points manula input */}
+
+          {/* student credinteals fieldset  */}
+          <fieldset style={{ display: 'inline', maxWidth: '80px'}} className="student-info" dir="rtl" >
+            <legend>تعبئة</legend>
+            <table>
+              <tbody>
+                <tr>
+                  <td><input className="student-cred-input" type="number" placeholder="الرقم الجامعي" /></td>
+                </tr>
+                <tr>
+                  <td><input className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
+                </tr>
+                <tr>
+                  <td><button style={{marginTop: 2}}>تعبئة تلقائية</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </fieldset>
+
+          <div className="or-div" style={{display: 'inline'}}>
+            <h2 style={{display: 'inline'}}>او</h2>
+          </div>
+
+          {/* Hours/Gpa/Points manual fieldset */}
           <fieldset style={{ display: 'inline'}} className="student-info" dir="rtl" >
             <legend>معلومات الطالب</legend>
             <table>
@@ -61,17 +83,17 @@ class App extends Component {
                 <tr>
                   <td/>
                   <td><p style={{ position: 'relative', bottom: '4px', left: '15px'}}>الساعات السابقة</p></td>
-                  <td><input value={this.state.hours} onChange={(e) => {this.setState({hours: e.target.value})}} id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
+                  <td><input className="student-information-input" value={this.state.hours} onChange={(e) => {this.setState({hours: e.target.value})}} id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="gpa"} value="gpa" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'gpa'})}} /></td>
                   <td><p>المعدل</p></td>
-                  <td><input value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="200" /></td>
+                  <td><input className="student-information-input" value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="points"} value="points" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'points'})}} /></td>
                   <td><p>النقاط</p></td>
-                  <td><input value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" min="1" max="200" /></td>
+                  <td><input className="student-information-input" value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" min="1" max="200" /></td>
                 </tr>
               </tbody>
             </table>
