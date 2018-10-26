@@ -66,15 +66,15 @@ class TotalCalculation extends Component {
         <table>
           <tbody>
             <tr>
-              <td><p className="title">النقاط</p></td>
-              <td><p>{totalPoints.toFixed(2)}</p></td>
+              <td><p className="title" style={(totalPoints!==0||totalGpa!==0)?{}:{marginLeft: 10}}>النقاط</p></td>
+              <td><p>{(totalPoints!==0||totalGpa!==0)?totalPoints.toFixed(2):'-'}</p></td>
             </tr>
             <tr>
-              <td><p className="title">المعدل</p></td>
-              <td><p>{totalGpa.toFixed(2)}</p></td>
+              <td><p className="title" style={(totalPoints!==0||totalGpa!==0)?{}:{marginLeft: 10}}>المعدل</p></td>
+              <td><p>{(totalPoints!==0||totalGpa!==0)?totalGpa.toFixed(2):'-'}</p></td>
             </tr>
             <tr>
-              <td><p className="title">التقدير</p></td>
+              <td><p className="title" style={(totalPoints!==0||totalGpa!==0)?{}:{marginLeft: 10}}>التقدير</p></td>
               <td><p>{statement}</p></td>
             </tr>
           </tbody>
