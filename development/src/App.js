@@ -12,6 +12,8 @@ class App extends Component {
     gpa: '',
     points: '',
     method: 'gpa',
+    studentID: '',
+    studentPassword: '',
   }
 
   componentWillMount() {
@@ -54,8 +56,8 @@ class App extends Component {
         <div className="main-container" >
 
           {/* student credinteals fieldset  */}
-          <fieldset style={{ display: 'inline', maxWidth: '80px'}} className="student-info" dir="rtl" >
-            <legend>تعبئة</legend>
+          <fieldset style={{ display: 'inline', maxWidth: '80px', padding: '6px 5px',}} className="student-info" dir="rtl" >
+            <legend>تعبئة تلقئاية</legend>
             <table>
               <tbody>
                 <tr>
@@ -65,35 +67,35 @@ class App extends Component {
                   <td><input className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
                 </tr>
                 <tr>
-                  <td><button style={{marginTop: 2}}>تعبئة تلقائية</button></td>
+                  <td><button className="fetch-information-button" >تعبئة تلقائية</button></td>
                 </tr>
               </tbody>
             </table>
           </fieldset>
 
           <div className="or-div" style={{display: 'inline'}}>
-            <h2 style={{display: 'inline'}}>او</h2>
+            <h3 style={{display: 'inline'}}>او</h3>
           </div>
 
           {/* Hours/Gpa/Points manual fieldset */}
-          <fieldset style={{ display: 'inline'}} className="student-info" dir="rtl" >
+          <fieldset style={{ display: 'inline', padding: '6px 5px'}} className="student-info" dir="rtl" >
             <legend>معلومات الطالب</legend>
             <table>
               <tbody>
                 <tr>
                   <td/>
-                  <td><p style={{ position: 'relative', bottom: '4px', left: '15px'}}>الساعات السابقة</p></td>
+                  <td className="student-information-label-table-data"><p className=" old-hours-label" style={{ position: 'relative', bottom: '5px', left: '9px'}}>الساعات السابقة</p></td>
                   <td><input className="student-information-input" value={this.state.hours} onChange={(e) => {this.setState({hours: e.target.value})}} id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="gpa"} value="gpa" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'gpa'})}} /></td>
-                  <td><p>المعدل</p></td>
+                  <td className="student-information-label-table-data"><p>المعدل</p></td>
                   <td><input className="student-information-input" value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="points"} value="points" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'points'})}} /></td>
-                  <td><p>النقاط</p></td>
-                  <td><input className="student-information-input" value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" min="1" max="200" /></td>
+                  <td className="student-information-label-table-data"><p>النقاط</p></td>
+                  <td><input className="student-information-input" value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" step="any" min="1" max="5000" /></td>
                 </tr>
               </tbody>
             </table>
