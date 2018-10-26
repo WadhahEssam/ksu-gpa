@@ -223,3 +223,8 @@ fieldset {
     position: relative;
     top: 2px;
 }
+
+.title {
+    margin-left: 3px;
+    color: #e4e4e4;
+}
