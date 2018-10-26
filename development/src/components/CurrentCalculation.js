@@ -20,7 +20,7 @@ class CurrentCalculation extends Component {
     gpa = sumPoints/sumHours;
     statement = Utils.getStatement(gpa);
 
-    return (
+    return ( 
       <fieldset style={{display: 'inline'}} dir="rtl">
         <legend>الفصلي</legend>
         <table>

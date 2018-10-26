@@ -23,7 +23,8 @@ class App extends Component {
         subjects.push({
           name: '',
           hours: '2',
-          grade: 'A+'
+          grade: 'A+',
+          checked: true,
         })
       }
       this.setState({subjects});
@@ -111,7 +112,8 @@ class App extends Component {
               subjects.push({
                 name: '',
                 hours: '2',
-                grade: 'A+'
+                grade: 'A+',
+                checked: true,
               })
               this.setState({subjects: subjects});
             }}
@@ -131,15 +133,16 @@ class App extends Component {
   }
 
   renderSubjects() {
-    const renderedSubjects = this.state.subjects.map((input, index) => {
+    const renderedSubjects = this.state.subjects.map((subject, index) => {
       return(
         <tr key={index}>
           <td className="index">{index+1}</td>
           <td>
             <input 
+            disabled={!subject.checked}
             size="3" 
             className="subject-name" 
-            value={this.state.subjects[index].name} 
+            value={subject.name} 
             onChange={(e) => {
               let subjects = _.cloneDeep(this.state.subjects);
               subjects[index].name = e.target.value;
@@ -149,7 +152,8 @@ class App extends Component {
           </td>
           <td>
             <select 
-            defaultValue={this.state.subjects[index].hours} 
+            disabled={!subject.checked}
+            defaultValue={subject.hours} 
             onChange={(e) => {
               let subjects = _.cloneDeep(this.state.subjects);
               subjects[index].hours = e.target.value;
@@ -168,22 +172,35 @@ class App extends Component {
           </td>
           <td>
             <select 
-              defaultValue={this.state.subjects[index].grade} 
-              onChange={(e) => {
-                let subjects = _.cloneDeep(this.state.subjects);
-                subjects[index].grade = e.target.value;
-                this.setState({subjects: subjects});
-              }}
-              >
-                <option>A+</option>
-                <option>A</option>
-                <option>B+</option>
-                <option>B</option>
-                <option>C+</option>
-                <option>C</option>
-                <option>D+</option>
-                <option>D</option>
+            disabled={!subject.checked}
+            defaultValue={subject.grade} 
+            onChange={(e) => {
+              let subjects = _.cloneDeep(this.state.subjects);
+              subjects[index].grade = e.target.value;
+              this.setState({subjects: subjects});
+            }}
+            >
+              <option>A+</option>
+              <option>A</option>
+              <option>B+</option>
+              <option>B</option>
+              <option>C+</option>
+              <option>C</option>
+              <option>D+</option>
+              <option>D</option>
             </select>
+          </td>
+          <td>
+            <input 
+            className="checkbox" 
+            id="eighth-checkbox" 
+            type="checkbox" 
+            defaultChecked={subject.checked}
+            onChange={(e) => {
+              let subjects = _.cloneDeep(this.state.subjects);
+              subjects[index].checked = e.target.checked;
+              this.setState({subjects: subjects});
+            }} />
           </td>
         </tr>
       );
