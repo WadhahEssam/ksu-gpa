@@ -66,6 +66,59 @@ td {
     padding:0px 4px;
 }
 
+tr {
+    margin: 2px 0px;
+}
+
+.index {
+    height: 34px;
+}
+
+.buttons-div {
+    margin-top: 10px;
+    margin-bottom: -17px;
+}
+
+.add-button {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background-color: #a5da97;
+    color: white;
+    margin-left: 10px;
+    border: 1px white solid;
+    font-size: 24px;
+}
+
+.remove-button {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background-color: #ca7373;
+    color: white;
+    margin-right: 10px;
+    border: 1px white solid;
+    font-size: 24px;
+}
+
+.add-button:hover {
+    cursor: pointer; 
+}
+
+.remove-button:hover {
+    cursor: pointer; 
+}
+
+.add-button-logo {
+    position: relative;
+    top: 2px;
+}
+
+.remove-button-logo {
+    position: relative;
+    top: 2px;
+}
+
 input {
     border-radius:7px;
     height: 20px;
@@ -103,6 +156,12 @@ a{
 .checkbox{
     position:relative;
     top:2px;
+}
+
+.table-div {
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: scroll;
 }
 
 
@@ -147,4 +206,8 @@ a{
         border-radius:18px;
         border:4px solid rgb(151, 149, 214) ;
     }
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }

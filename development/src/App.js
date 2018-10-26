@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import SelectField from './components/SelectField';
 import CurrentCalculation from './components/CurrentCalculation';
+import TotalCalculation from './components/TotalCalculation';
 
 class App extends Component {
 
@@ -46,38 +46,70 @@ class App extends Component {
                 <tr>
                   <td/>
                   <td><p style={{ position: 'relative', bottom: '4px', left: '15px'}}>عدد الساعات السابقة</p></td>
-                  <td><input id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
+                  <td><input value={this.state.hours} onChange={(e) => {this.setState({hours: e.target.value})}} id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="gpa"} value="gpa" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'gpa'})}} /></td>
                   <td><p>المعدل التراكمي</p></td>
-                  <td><input disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="5" /></td>
+                  <td><input value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="5" /></td>
                 </tr>
                 <tr>
                   <td><input checked={this.state.method==="points"} value="points" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'points'})}} /></td>
                   <td><p>النقاط التراكمية</p></td>
-                  <td><input disabled={this.state.method!=="points"} id="points-text" type="number" min="1" max="200" /></td>
+                  <td><input value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" min="1" max="200" /></td>
                 </tr>
               </tbody>
             </table>
           </fieldset>
 
           {/* Table of subjects */}
-          <table align="center" dir="rtl" className="subjects-table">
-            <thead>
-                <tr>
-                  <th/>
-                  <th>اسم المادة</th>
-                  <th>الساعات</th>
-                  <th>التقدير</th>
-                </tr>
-            </thead>
-            {this.renderSubjects()}
-          </table>
+          <div className="table-div">
+            <table align="center" dir="rtl" className="subjects-table">
+              <thead>
+                  <tr>
+                    <th/>
+                    <th>اسم المادة</th>
+                    <th>الساعات</th>
+                    <th>التقدير</th>
+                  </tr>
+              </thead>
+              {this.renderSubjects()}
+            </table>
+          </div>
+          
+          {/* Add/Remove Buttons */}
+          <div className="buttons-div">
+            <button
+            className="remove-button"
+            onClick={() => {
+              let subjects = _.cloneDeep(this.state.subjects);
+              subjects.pop();
+              this.setState({subjects: subjects});
+            }}
+            >
+              <img height="20" className="remove-button-logo" src="img/minus.png" alt="remove-logo" />
+            </button>
+            <button
+            className="add-button"
+            onClick={() => {
+              let subjects = _.cloneDeep(this.state.subjects);
+              subjects.push({
+                name: '',
+                hours: '2',
+                grade: 'A+'
+              })
+              this.setState({subjects: subjects});
+            }}
+            >
+              <img height="20" className="add-button-logo" src="img/plus.png" alt="add-logo" />
+            </button>
+          </div>
+
+          <br/>
           
           {/* Results */}
           <CurrentCalculation state={this.state} />
-
+          <TotalCalculation state={this.state} />
         </div>
       </div>
     );
@@ -87,7 +119,7 @@ class App extends Component {
     const renderedSubjects = this.state.subjects.map((input, index) => {
       return(
         <tr key={index}>
-          <td>{index+1}</td>
+          <td className="index">{index+1}</td>
           <td>
             <input 
             size="3" 
