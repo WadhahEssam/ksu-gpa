@@ -15,6 +15,7 @@ class App extends Component {
     method: 'gpa',
     studentID: '',
     studentPassword: '',
+    isFetching: false,
   }
 
   componentWillMount() {
@@ -48,19 +49,35 @@ class App extends Component {
   }
 
   fetchUserInformation = async () => {
+    this.setState({isFetching: true})
     const { studentID, studentPassword }  = this.state;
-    console.log(studentID, ' ', studentPassword);
-    const result = await axios.post('https://ksu-edugate-scraping-wadahesam.c9users.io/getStudentInformation', {id: studentID, password: studentPassword});
-    console.log(result.data);
-    const { gpa, hours, points } = result.data;
-    this.setState({
-      gpa,
-      hours: parseInt(hours),
-      points,
-    });
+    await axios.post('https://ksu-edugate-scraping-wadahesam.c9users.io/getStudentInformation', {id: studentID, password: studentPassword})
+    .then((result) => {
+      if (result.data === "Somthing Wrong Happened") {
+        throw new Error("Somthing Wrong Happened");
+      }
+      const { gpa, hours, points } = result.data;
+      console.log(result.data);
+      this.setState({
+        gpa,
+        hours: parseInt(hours),
+        points,
+        method: 'points',
+        isFetching: false
+      });
+    })
+    .catch((error) => {
+      this.showError();
+      this.setState({isFetching: false})
+    })
+  }
+
+  showError = () => {
+    console.log('somthing wrong happened');
   }
 
   render() {
+    const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="ksu-logo" /> ;
     return (
       <div>
         <div className="App">
@@ -81,7 +98,7 @@ class App extends Component {
                   <td><input value={this.state.studentPassword} onChange={(e) => {this.setState({studentPassword: e.target.value})}} className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
                 </tr>
                 <tr>
-                  <td><hr className="fetch-button-horizontal-line"/><button className="fetch-information-button" onClick={this.fetchUserInformation}>تعبئة </button></td>
+                  <td><hr className="fetch-button-horizontal-line"/><button className="fetch-information-button" onClick={this.fetchUserInformation}>{(this.state.isFetching) ? loadingLogo : 'ادخال'}</button></td>
                 </tr>
               </tbody>
             </table>

@@ -32,7 +32,7 @@ legend {
 .main-container {
     width:40% ; 
     padding:5px 30px 15px 30px;
-    min-width:300px;
+    min-width: 341px;
     /*position :absolute; */
     top:110px;
     /*right:70%;*/
@@ -295,4 +295,9 @@ fieldset {
     position: relative;
     left: 6%;
     margin-top: 4px;
+}
+
+.loading-icon {
+    position: relative;
+    bottom: 2px;
 }
