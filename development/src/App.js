@@ -57,7 +57,7 @@ class App extends Component {
 
           {/* student credinteals fieldset  */}
           <fieldset style={{ display: 'inline', maxWidth: '80px', padding: '6px 5px',}} className="student-info" dir="rtl" >
-            <legend>تعبئة تلقئاية</legend>
+            <legend>تعبئة تلقائية</legend>
             <table>
               <tbody>
                 <tr>
@@ -67,7 +67,7 @@ class App extends Component {
                   <td><input className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
                 </tr>
                 <tr>
-                  <td><button className="fetch-information-button" >تعبئة تلقائية</button></td>
+                  <td><button className="fetch-information-button" >تعبئة </button></td>
                 </tr>
               </tbody>
             </table>
