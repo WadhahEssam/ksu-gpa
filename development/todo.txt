@@ -1,3 +1,6 @@
 things should be added : 
-1) fetching the data from the server with the creds 
-2) 
+1) making the fetch fields and button as a form 
+2) fixing the manifest.json 
+3) adding icon
+4) adding animation for error div
+5) add the contact and github 
