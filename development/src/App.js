@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { cloneDeep } from 'lodash';
 import CurrentCalculation from './components/CurrentCalculation';
 import TotalCalculation from './components/TotalCalculation';
+import axios from 'axios';
 
 const NUMBER_OF_DEFAULT_SUBJECTS = 6;
 
@@ -46,6 +47,19 @@ class App extends Component {
     localStorage.setItem("state", JSON.stringify(this.state));
   }
 
+  fetchUserInformation = async () => {
+    const { studentID, studentPassword }  = this.state;
+    console.log(studentID, ' ', studentPassword);
+    const result = await axios.post('https://ksu-edugate-scraping-wadahesam.c9users.io/getStudentInformation', {id: studentID, password: studentPassword});
+    console.log(result.data);
+    const { gpa, hours, points } = result.data;
+    this.setState({
+      gpa,
+      hours: pars(hours),
+      points,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -61,13 +75,13 @@ class App extends Component {
             <table>
               <tbody>
                 <tr>
-                  <td><input className="student-cred-input" type="number" placeholder="الرقم الجامعي" /></td>
+                  <td><input value={this.state.studentID} onChange={(e) => {this.setState({studentID: e.target.value})}} className="student-cred-input" type="number" placeholder="الرقم الجامعي" /></td>
                 </tr>
                 <tr>
-                  <td><input className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
+                  <td><input value={this.state.studentPassword} onChange={(e) => {this.setState({studentPassword: e.target.value})}} className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
                 </tr>
                 <tr>
-                  <td><button className="fetch-information-button" >تعبئة </button></td>
+                  <td><hr className="fetch-button-horizontal-line"/><button className="fetch-information-button" onClick={this.fetchUserInformation}>تعبئة </button></td>
                 </tr>
               </tbody>
             </table>
@@ -121,7 +135,7 @@ class App extends Component {
             <button
             className="remove-button"
             onClick={() => {
-              let subjects = _.cloneDeep(this.state.subjects);
+              let subjects = cloneDeep(this.state.subjects);
               if (subjects.length > 1) {
                 subjects.pop();
                 this.setState({subjects: subjects});
@@ -133,7 +147,7 @@ class App extends Component {
             <button
             className="add-button"
             onClick={() => {
-              let subjects = _.cloneDeep(this.state.subjects);
+              let subjects = cloneDeep(this.state.subjects);
               subjects.push({
                 id: subjects.length,
                 name: '',
@@ -170,7 +184,7 @@ class App extends Component {
             className="subject-name" 
             value={subject.name} 
             onChange={(e) => {
-              let subjects = _.cloneDeep(this.state.subjects);
+              let subjects = cloneDeep(this.state.subjects);
               subjects[index].name = e.target.value;
               this.setState({subjects: subjects});
             }} 
@@ -181,7 +195,7 @@ class App extends Component {
             disabled={!subject.checked}
             defaultValue={subject.hours} 
             onChange={(e) => {
-              let subjects = _.cloneDeep(this.state.subjects);
+              let subjects = cloneDeep(this.state.subjects);
               subjects[index].hours = e.target.value;
               this.setState({subjects: subjects});
             }}
@@ -201,7 +215,7 @@ class App extends Component {
             disabled={!subject.checked}
             defaultValue={subject.grade} 
             onChange={(e) => {
-              let subjects = _.cloneDeep(this.state.subjects);
+              let subjects = cloneDeep(this.state.subjects);
               subjects[index].grade = e.target.value;
               this.setState({subjects: subjects});
             }}
@@ -223,7 +237,7 @@ class App extends Component {
             type="checkbox" 
             defaultChecked={subject.checked}
             onChange={(e) => {
-              let subjects = _.cloneDeep(this.state.subjects);
+              let subjects = cloneDeep(this.state.subjects);
               subjects[index].checked = e.target.checked;
               this.setState({subjects: subjects});
             }} />
