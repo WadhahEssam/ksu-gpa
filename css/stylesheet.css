@@ -276,8 +276,8 @@ fieldset {
     cursor: pointer;
     opacity: 0.9;
     transition: 0.3s;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 1px;
+    margin-bottom: -1px;
     height: 28px;
     width: 95%;
 }
@@ -300,4 +300,20 @@ fieldset {
 .loading-icon {
     position: relative;
     bottom: 2px;
+}
+
+.error-div {
+    background-color: #bf3737;
+    width: 300px;
+    height: 39px;
+    margin: auto;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.error-text {
+    position: relative;
+    top: 6px;
 }
