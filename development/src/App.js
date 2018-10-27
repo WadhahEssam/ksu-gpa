@@ -56,14 +56,15 @@ class App extends Component {
       if (result.data === "Somthing Wrong Happened") {
         throw new Error("Somthing Wrong Happened");
       }
-      const { gpa, hours, points } = result.data;
+      const { gpa, hours, points, subjects } = result.data;
       console.log(result.data);
       this.setState({
         gpa,
         hours: parseInt(hours),
         points,
         method: 'points',
-        isFetching: false
+        isFetching: false,
+        subjects
       });
     })
     .catch((error) => {
@@ -77,6 +78,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state);
     const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="ksu-logo" /> ;
     return (
       <div>
@@ -210,7 +212,7 @@ class App extends Component {
           <td>
             <select 
             disabled={!subject.checked}
-            defaultValue={subject.hours} 
+            value={subject.hours} 
             onChange={(e) => {
               let subjects = cloneDeep(this.state.subjects);
               subjects[index].hours = e.target.value;
