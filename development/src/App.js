@@ -55,7 +55,7 @@ class App extends Component {
     const { gpa, hours, points } = result.data;
     this.setState({
       gpa,
-      hours: pars(hours),
+      hours: parseInt(hours),
       points,
     });
   }
