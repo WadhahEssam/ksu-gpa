@@ -16,6 +16,8 @@ class App extends Component {
     studentID: '',
     studentPassword: '',
     isFetching: false,
+    isError: false,
+    errorMessage: 'حدث خطأ',
   }
 
   componentWillMount() {
@@ -57,7 +59,6 @@ class App extends Component {
         throw new Error("Somthing Wrong Happened");
       }
       const { gpa, hours, points, subjects } = result.data;
-      console.log(result.data);
       this.setState({
         gpa,
         hours: parseInt(hours),
@@ -68,24 +69,41 @@ class App extends Component {
       });
     })
     .catch((error) => {
-      this.showError();
-      this.setState({isFetching: false})
+      console.log(error.message);
+      if (error.message === 'Somthing Wrong Happened') {
+        this.setState({isFetching: false, isError: true, errorMessage: 'تأكد من بيانات الطالب المدخلة'});
+      } else {
+        this.setState({isFetching: false, isError: true, errorMessage: 'هنالك خطأ في الاتصال بالخادم'});
+      }
+      setTimeout(() => {
+        this.setState({isError:false});
+      }, 5000)
     })
   }
 
-  showError = () => {
-    console.log('somthing wrong happened');
-  }
-
-  render() {
-    console.log(this.state);
-    const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="ksu-logo" /> ;
+  renderError = () => {
     return (
       <div>
-        <div className="App">
-          <img fill="#4089A9" align="middle" id="logo" src="img/logo.svg" alt="ksu-logo" />
+        <div className="error-div">
+          <h3 className="error-text">{this.state.errorMessage}</h3>
         </div>
-    
+      </div>
+    );
+  }
+
+
+
+  render() {
+    const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="ksu-logo" /> ;
+    const ksuLogo = (
+      <div className="App">
+        <img fill="#4089A9" align="middle" id="logo" src="img/logo.svg" alt="ksu-logo" />
+      </div>
+    );
+    return (
+      <div>
+        {(this.state.isError) ? this.renderError() : ksuLogo}
+
         <div className="main-container" >
 
           {/* student credinteals fieldset  */}
