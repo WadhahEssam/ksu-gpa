@@ -50,7 +50,8 @@ class App extends Component {
     localStorage.setItem("state", JSON.stringify(this.state));
   }
 
-  fetchUserInformation = async () => {
+  fetchUserInformation = async (e) => {
+    e.preventDefault();
     this.setState({isFetching: true})
     const { studentID, studentPassword }  = this.state;
     await axios.post('https://ksu-edugate-scraping-wadahesam.c9users.io/getStudentInformation', {id: studentID, password: studentPassword})
@@ -84,9 +85,9 @@ class App extends Component {
   renderError = () => {
     return (
       <div>
-        <div className="error-div">
-          <h3 className="error-text">{this.state.errorMessage}</h3>
-        </div>
+          <div className="error-div">
+            <h3 className="error-text">{this.state.errorMessage}</h3>
+          </div>
       </div>
     );
   }
@@ -94,7 +95,8 @@ class App extends Component {
 
 
   render() {
-    const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="ksu-logo" /> ;
+    const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="loading-icon" /> ;
+    const githubIcon = <a className="github-icon contact-icons" href="https://github.com/WadhahEssam/ksu-gpa-v2"><img align="middle" height="20" src="img/github.svg" alt="github-icon" /></a> ;
     const ksuLogo = (
       <div className="App">
         <img fill="#4089A9" align="middle" id="logo" src="img/logo.svg" alt="ksu-logo" />
@@ -109,19 +111,21 @@ class App extends Component {
           {/* student credinteals fieldset  */}
           <fieldset style={{ display: 'inline', maxWidth: '80px', padding: '6px 5px',}} className="student-info" dir="rtl" >
             <legend>تعبئة تلقائية</legend>
-            <table>
-              <tbody>
-                <tr>
-                  <td><input value={this.state.studentID} onChange={(e) => {this.setState({studentID: e.target.value})}} className="student-cred-input" type="number" placeholder="الرقم الجامعي" /></td>
-                </tr>
-                <tr>
-                  <td><input value={this.state.studentPassword} onChange={(e) => {this.setState({studentPassword: e.target.value})}} className="student-cred-input" type="password" placeholder="كلمة المرور" /></td>
-                </tr>
-                <tr>
-                  <td><hr className="fetch-button-horizontal-line"/><button className="fetch-information-button" onClick={this.fetchUserInformation}>{(this.state.isFetching) ? loadingLogo : 'ادخال'}</button></td>
-                </tr>
-              </tbody>
-            </table>
+              <form onSubmit={this.fetchUserInformation}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td><input value={this.state.studentID} onChange={(e) => {this.setState({studentID: e.target.value})}} className="student-cred-input" type="text" required maxLength="9" minLength="9" placeholder="الرقم الجامعي" /></td>
+                  </tr>
+                  <tr>
+                    <td><input value={this.state.studentPassword} onChange={(e) => {this.setState({studentPassword: e.target.value})}} className="student-cred-input" required type="password" placeholder="كلمة المرور" /></td>
+                  </tr>
+                  <tr>
+                    <td><hr className="fetch-button-horizontal-line"/><button className="fetch-information-button" type="submit">{(this.state.isFetching) ? loadingLogo : 'ادخال'}</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
           </fieldset>
 
           <div className="or-div" style={{display: 'inline'}}>
@@ -205,6 +209,7 @@ class App extends Component {
           <CurrentCalculation state={this.state} />
           <TotalCalculation state={this.state} />
         </div>
+        {githubIcon}
       </div>
     );
   }
@@ -213,6 +218,7 @@ class App extends Component {
     const renderedSubjects = this.state.subjects.map((subject, index) => {
       return(
         <tr key={index}>
+
           <td className="index">{index+1}</td>
           <td>
             <input 

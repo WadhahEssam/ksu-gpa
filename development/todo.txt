@@ -1,6 +1,7 @@
 things should be added : 
-1) making the fetch fields and button as a form 
-2) fixing the manifest.json 
-3) adding icon
+1) //making the fetch fields and button as a form 
+2) //fixing the manifest.json 
+3) //adding icon
 4) adding animation for error div
-5) add the contact and github 
+5) //add the contact and github 
+6) put the server in digital ocean
