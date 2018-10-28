@@ -46,35 +46,35 @@ class StudentFetchFieldset extends Component {
               <tr>
                 <td>
                   <input 
-                  value={this.props.state.studentID} 
-                  onChange={(e) => {this.props.setState({studentID: e.target.value})}} 
-                  className="student-cred-input" 
-                  type="text" 
-                  required 
-                  maxLength="9" 
-                  minLength="9" 
-                  placeholder="الرقم الجامعي" 
+                    value={this.props.state.studentID} 
+                    onChange={(e) => {this.props.setState({studentID: e.target.value})}} 
+                    className="student-cred-input" 
+                    type="text" 
+                    required 
+                    maxLength="9" 
+                    minLength="9" 
+                    placeholder="الرقم الجامعي" 
                   />
                 </td>
               </tr>
               <tr>
                 <td>
                   <input 
-                  value={this.props.state.studentPassword} 
-                  onChange={(e) => {this.props.setState({studentPassword: e.target.value})}} 
-                  className="student-cred-input" 
-                  required 
-                  type="password" 
-                  placeholder="كلمة المرور" 
+                    value={this.props.state.studentPassword} 
+                    onChange={(e) => {this.props.setState({studentPassword: e.target.value})}} 
+                    className="student-cred-input" 
+                    required 
+                    type="password" 
+                    placeholder="كلمة المرور" 
                   />
                 </td>
               </tr>
               <tr>
                 <td>
                   <hr 
-                  className="fetch-button-horizontal-line"/><button 
-                  className="fetch-information-button" 
-                  type="submit"
+                    className="fetch-button-horizontal-line"/><button 
+                    className="fetch-information-button" 
+                    type="submit"
                   >
                     {(this.props.state.isFetching) ? loadingLogo : 'ادخال'}
                   </button>

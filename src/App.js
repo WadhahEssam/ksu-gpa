@@ -8,7 +8,6 @@ import AddRemoveButtons from './components/AddRemoveButtons';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
-
 const NUMBER_OF_DEFAULT_SUBJECTS = 5;
 const TIME_TO_HIDE_ERROR = 5000;
 
@@ -85,8 +84,6 @@ class App extends Component {
       </div>
     );
   }
-
-
 }
 
 export default App;
