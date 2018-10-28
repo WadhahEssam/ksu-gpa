@@ -5,6 +5,8 @@ import CurrentCalculation from './components/CurrentCalculation';
 import TotalCalculation from './components/TotalCalculation';
 import Error from './components/Error';
 import LogoHeader from './components/LogoHeader';
+import StudentInformationFieldset from './components/StudentInfomationFieldset';
+import StudentFetchFieldset from './components/StudentFetchFieldset';
 
 
 const NUMBER_OF_DEFAULT_SUBJECTS = 5;
@@ -87,7 +89,6 @@ class App extends Component {
   }
 
   render() {
-    const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="loading-icon" /> ;
     const githubIcon = <a className="github-icon contact-icons" href="https://github.com/WadhahEssam/ksu-gpa-v2"><img align="middle" height="20" src="img/github.svg" alt="github-icon" /></a> ;
     return (
       <div>
@@ -99,53 +100,13 @@ class App extends Component {
 
         <div className="main-container" >
 
-          {/* student credinteals fieldset  */}
-          <fieldset style={{ display: 'inline', maxWidth: '80px', padding: '6px 5px',}} className="student-info" dir="rtl" >
-            <legend>تعبئة تلقائية</legend>
-              <form onSubmit={this.fetchUserInformation}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td><input value={this.state.studentID} onChange={(e) => {this.setState({studentID: e.target.value})}} className="student-cred-input" type="text" required maxLength="9" minLength="9" placeholder="الرقم الجامعي" /></td>
-                  </tr>
-                  <tr>
-                    <td><input value={this.state.studentPassword} onChange={(e) => {this.setState({studentPassword: e.target.value})}} className="student-cred-input" required type="password" placeholder="كلمة المرور" /></td>
-                  </tr>
-                  <tr>
-                    <td><hr className="fetch-button-horizontal-line"/><button className="fetch-information-button" type="submit">{(this.state.isFetching) ? loadingLogo : 'ادخال'}</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </fieldset>
+          <StudentFetchFieldset setState={(newState) => {this.setState(newState)}} state={this.state} fetchUserInformation={(e) => {this.fetchUserInformation(e)}} />
 
           <div className="or-div" style={{display: 'inline'}}>
             <h3 style={{display: 'inline'}}>او</h3>
           </div>
 
-          {/* Hours/Gpa/Points manual fieldset */}
-          <fieldset style={{ display: 'inline', padding: '6px 5px'}} className="student-info" dir="rtl" >
-            <legend>معلومات الطالب</legend>
-            <table>
-              <tbody>
-                <tr>
-                  <td/>
-                  <td className="student-information-label-table-data"><p className=" old-hours-label" style={{ position: 'relative', bottom: '5px', left: '9px'}}>الساعات السابقة</p></td>
-                  <td><input className="student-information-input" value={this.state.hours} onChange={(e) => {this.setState({hours: e.target.value})}} id="hours-text" style={{ marginBottom: '10px' }} size="3" type="number" min="1" max="200" /></td>
-                </tr>
-                <tr>
-                  <td><input checked={this.state.method==="gpa"} value="gpa" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'gpa'})}} /></td>
-                  <td className="student-information-label-table-data"><p>المعدل</p></td>
-                  <td><input className="student-information-input" value={this.state.gpa} onChange={(e) => {this.setState({gpa: e.target.value})}}  disabled={this.state.method!=="gpa"} id="gpa-text" type="number" min="1" max="200" /></td>
-                </tr>
-                <tr>
-                  <td><input checked={this.state.method==="points"} value="points" className="radio-button" type="radio" name="gpa-type" onChange={() => {this.setState({method: 'points'})}} /></td>
-                  <td className="student-information-label-table-data"><p>النقاط</p></td>
-                  <td><input className="student-information-input" value={this.state.points} onChange={(e) => {this.setState({points: e.target.value})}} disabled={this.state.method!=="points"} id="points-text" type="number" step="any" min="1" max="5000" /></td>
-                </tr>
-              </tbody>
-            </table>
-          </fieldset>
+          <StudentInformationFieldset setState={(newState) => {this.setState(newState)}} state={this.state} />
 
           {/* Table of subjects */}
           <div className="table-div">
