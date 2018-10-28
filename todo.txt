@@ -10,3 +10,4 @@ things should be added :
 9) fixing the table min-width in desktop when 
 10) adding the read me file
 11) seperate the development from the github pages repos
+12) fix the favicon.ico

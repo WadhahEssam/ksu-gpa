@@ -349,3 +349,7 @@ fieldset {
 .header {
     height: 93px;
 }
+
+.method-label {
+    cursor: pointer;
+}

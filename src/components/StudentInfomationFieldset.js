@@ -11,7 +11,7 @@ class StudentInformationFieldset extends Component {
             <tr>
               <td/>
               <td className="student-information-label-table-data">
-                <p className=" old-hours-label" style={{ position: 'relative', bottom: '5px', left: '9px'}}>الساعات السابقة</p>
+                <p className="old-hours-label" style={{ position: 'relative', bottom: '5px', left: '9px'}}>الساعات السابقة</p>
               </td>
               <td>
                 <input 
@@ -38,7 +38,7 @@ class StudentInformationFieldset extends Component {
                 />
               </td>
               <td className="student-information-label-table-data">
-                <p>المعدل</p>
+                <p className="method-label" onClick={(e) => {this.props.setState({method: 'gpa'})}}>المعدل</p>
               </td>
               <td>
                 <input 
@@ -65,7 +65,7 @@ class StudentInformationFieldset extends Component {
                 />
               </td>
               <td className="student-information-label-table-data">
-                <p>النقاط</p>
+                <p className="method-label" onClick={(e) => {this.props.setState({method: 'points'})}}>النقاط</p>
               </td>
               <td>
                 <input 
