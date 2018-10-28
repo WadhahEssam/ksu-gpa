@@ -3,7 +3,6 @@ import Utils from '../Utils';
 
 class CurrentCalculation extends Component {
 
-
   render() {
     let statement = 'ممتاز مرتفع';
     let gpa = 5.00;

@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { cloneDeep } from 'lodash';
 import CurrentCalculation from './components/CurrentCalculation';
 import TotalCalculation from './components/TotalCalculation';
-import axios from 'axios';
+import Error from './components/Error';
+import LogoHeader from './components/LogoHeader';
 
-const NUMBER_OF_DEFAULT_SUBJECTS = 6;
+
+const NUMBER_OF_DEFAULT_SUBJECTS = 5;
+const TIME_TO_HIDE_ERROR = 5000;
 
 class App extends Component {
   state = {
@@ -21,6 +25,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    // check if there is data in the local storage
     const storageState = JSON.parse(localStorage.getItem("state"));
     if (storageState===null) {
       // adding the default empty subjects
@@ -32,7 +37,7 @@ class App extends Component {
           hours: '2',
           grade: 'A+',
           checked: true,
-        })
+        });
       }
       this.setState({subjects});
     } else {
@@ -70,7 +75,6 @@ class App extends Component {
       });
     })
     .catch((error) => {
-      console.log(error.message);
       if (error.message === 'Somthing Wrong Happened') {
         this.setState({isFetching: false, isError: true, errorMessage: 'تأكد من بيانات الطالب المدخلة'});
       } else {
@@ -78,33 +82,20 @@ class App extends Component {
       }
       setTimeout(() => {
         this.setState({isError:false});
-      }, 5000)
+      }, TIME_TO_HIDE_ERROR)
     })
   }
-
-  renderError = () => {
-    return (
-      <div>
-          <div className="error-div">
-            <h3 className="error-text">{this.state.errorMessage}</h3>
-          </div>
-      </div>
-    );
-  }
-
-
 
   render() {
     const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="loading-icon" /> ;
     const githubIcon = <a className="github-icon contact-icons" href="https://github.com/WadhahEssam/ksu-gpa-v2"><img align="middle" height="20" src="img/github.svg" alt="github-icon" /></a> ;
-    const ksuLogo = (
-      <div className="App">
-        <img fill="#4089A9" align="middle" id="logo" src="img/logo.svg" alt="ksu-logo" />
-      </div>
-    );
     return (
       <div>
-        {(this.state.isError) ? this.renderError() : ksuLogo}
+
+        {/* Header Logo/Error */}
+        <div>
+          {(this.state.isError) ? <Error errorMessage={this.state.errorMessage} /> : <LogoHeader/>}
+        </div>
 
         <div className="main-container" >
 

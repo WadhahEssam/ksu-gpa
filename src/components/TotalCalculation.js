@@ -3,12 +3,6 @@ import Utils from '../Utils';
 
 class TotalCalculation extends Component {
 
-  state = {
-  }
-
-  componentDidMount() {
-  }
-
   render() {
     let statement = '-';
     let gpa = 5;
@@ -21,7 +15,6 @@ class TotalCalculation extends Component {
     const oldGpa = parseFloat(state.gpa);
     const oldPoints = parseFloat(state.points);
     const oldHours = parseFloat(state.hours);
-
     const sumPointsAndHours = Utils.getSumPointsAndHours(this.props.state.subjects);
     let {sumHours, sumPoints} = sumPointsAndHours;
 
@@ -52,8 +45,6 @@ class TotalCalculation extends Component {
         statement = Utils.getStatement(totalGpa);
       }
     }
-
-    
 
     return (
       <fieldset style={{display: 'inline'}} dir="rtl">
