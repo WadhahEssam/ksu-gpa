@@ -5,3 +5,7 @@ things should be added :
 4) adding animation for error div
 5) //add the contact and github 
 6) put the server in digital ocean
+7) making the default number of subjects = 5 
+8) making the text of ( points and gpa ) as buttons 
+9) fixing the table min-width in desktop when 
+10) adding the read me file
