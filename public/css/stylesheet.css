@@ -32,7 +32,7 @@ legend {
 .main-container {
     width:40% ; 
     padding:5px 30px 15px 30px;
-    min-width: 341px;
+    min-width: 397px;
     /*position :absolute; */
     top:110px;
     /*right:70%;*/
@@ -200,7 +200,7 @@ fieldset {
 
 .buttons-div {
     margin-top: 8px;
-    margin-bottom: -19px;
+    margin-bottom: 0px;
 }
 
 .add-button {
@@ -326,7 +326,6 @@ fieldset {
     height: 39px;
     margin: auto;
     border-radius: 6px;
-    transition: 0.3s;
     margin-top: 28px;
     margin-bottom: 28px;
 }
