@@ -4,14 +4,14 @@ class StudentInformationFieldset extends Component {
 
   render() {
     return (
-      <fieldset style={{ display: 'inline', padding: '6px 5px'}} className="student-info" dir="rtl" >
+      <fieldset style={{display: 'inline', padding: '6px 5px'}} className="student-info" dir="rtl" >
         <legend>معلومات الطالب</legend>
         <table>
           <tbody>
             <tr>
               <td/>
               <td className="student-information-label-table-data">
-                <p className="old-hours-label" style={{ position: 'relative', bottom: '5px', left: '9px'}}>الساعات السابقة</p>
+                <p className="old-hours-label" style={{position: 'relative', bottom: '5px', left: '9px'}}>الساعات السابقة</p>
               </td>
               <td>
                 <input 

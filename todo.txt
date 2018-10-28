@@ -1,13 +1,15 @@
 things should be added : 
-1) //making the fetch fields and button as a form 
-2) //fixing the manifest.json 
-3) //adding icon
-4) adding animation for error div
-5) //add the contact and github 
-6) put the server in digital ocean
-7) making the default number of subjects = 5 
-8) making the text of ( points and gpa ) as buttons 
-9) fixing the table min-width in desktop when 
-10) adding the read me file
-11) seperate the development from the github pages repos
-12) fix the favicon.ico
+fix the favicon.ico
+adding animation for error div
+put the server in digital ocean
+writing the read me file
+
+done :
+//making the fetch fields and button as a form 
+//fixing the manifest.json 
+//adding icon
+//add the contact and github 
+//making the default number of subjects = 5 
+//making the text of ( points and gpa ) as buttons 
+//fixing the table min-width in desktop when 
+//seperate the development from the github pages repos

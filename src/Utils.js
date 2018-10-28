@@ -56,7 +56,6 @@ class Utils {
 
     return {sumHours, sumPoints};
   }
-
 }
 
 export default Utils;
