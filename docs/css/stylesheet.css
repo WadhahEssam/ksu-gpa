@@ -17,7 +17,7 @@ body::before {
   height: 100%;  
   opacity: .4; 
   z-index: -1;
-  background-image: url("https://raw.githubusercontent.com/WadhahEssam/ksu-gpa-v2/master/img/background.png");
+  background-image: url("https://raw.githubusercontent.com/WadhahEssam/ksu-gpa-v2/master/docs/img/background.png");
   background-repeat: repeat;
 }
 
