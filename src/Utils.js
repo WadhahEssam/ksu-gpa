@@ -37,6 +37,8 @@ class Utils {
             return 2.50 ; 
         case "D" :
             return 2.00 ; 
+        case "F" :
+            return 1.00 ; 
         default:
             return null;
     }

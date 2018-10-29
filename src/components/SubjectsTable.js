@@ -78,6 +78,7 @@ class SubjectsTable extends Component {
               <option>C</option>
               <option>D+</option>
               <option>D</option>
+              <option>F</option>
             </select>
           </td>
           <td>
