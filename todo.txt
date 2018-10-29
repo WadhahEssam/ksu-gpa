@@ -1,11 +1,10 @@
-things should be added : 
+* things should be added : 
 fix the favicon.ico
 adding animation for error div
-put the server in digital ocean
 writing the read me file
 
 
-done :
+* done :
 //making the fetch fields and button as a form 
 //fixing the manifest.json 
 //adding icon
@@ -16,3 +15,4 @@ done :
 //seperate the development from the github pages repos
 //adding the F rate
 //adding the site to google search
+//put the server in digital ocean

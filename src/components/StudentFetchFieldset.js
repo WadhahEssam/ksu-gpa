@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ENV from '../env';
 
 class StudentFetchFieldset extends Component {
 
@@ -7,7 +8,7 @@ class StudentFetchFieldset extends Component {
     e.preventDefault();
     this.props.setState({isFetching: true})
     const { studentID, studentPassword }  = this.props.state;
-    await axios.post('https://ksu-edugate-scraping-wadahesam.c9users.io/getStudentInformation', {id: studentID, password: studentPassword})
+    await axios.post(`${ENV.url}/getStudentInformation`, {id: studentID, password: studentPassword})
     .then((result) => {
       if (result.data === "Somthing Wrong Happened") {
         throw new Error("Somthing Wrong Happened");
@@ -23,6 +24,7 @@ class StudentFetchFieldset extends Component {
       });
     })
     .catch((error) => {
+      console.log(error.message);
       if (error.message === 'Somthing Wrong Happened') {
         this.props.setState({isFetching: false, isError: true, errorMessage: 'تأكد من بيانات الطالب المدخلة'});
       } else {
