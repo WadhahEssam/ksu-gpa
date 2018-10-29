@@ -1,6 +1,4 @@
 body {
-    /*background-size:60%;*/
-    /*background:white;*/
     text-align:center;
     color:white;
     font-weight:bold;
@@ -91,8 +89,6 @@ select {
     background-color: white;
 }
 
-
-
 .radio-button {
     position:relative;
     top:3px;
@@ -105,8 +101,6 @@ a{
     font-family: "Courier New", Courier, monospace ; 
     font-weight: 100; 
 }
-
-
 
 @media only screen and (max-device-width: 480px) {
     body {
@@ -131,8 +125,6 @@ a{
         border-radius:10px;
         margin: 8px auto 1px auto;
     }
-
-
     
     .main-container {
         width:80% ; 
