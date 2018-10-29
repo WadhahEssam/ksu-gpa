@@ -3,6 +3,8 @@ fix the favicon.ico
 adding animation for error div
 put the server in digital ocean
 writing the read me file
+adding the F rate
+adding the site to google search
 
 done :
 //making the fetch fields and button as a form 
