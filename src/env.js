@@ -1,3 +1,3 @@
 module.exports = {
-  url: 'http://167.99.36.68',
+  url: 'https://fadfadah.net/ksu-gpa',
 }
