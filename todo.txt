@@ -4,6 +4,7 @@ adding animation for error div
 writing the read me file
 try to fix the style in safari mobiles
 maybe i need to tell the user why it is taking so long
+make the method butons with a darker collor if it is not chosen
 
 * done :
 //making the fetch fields and button as a form 
