@@ -353,3 +353,9 @@ fieldset {
 .method-label {
     cursor: pointer;
 }
+
+.student-input-div {
+    width: 110%;
+    position: relative;
+    right: 5%;
+}

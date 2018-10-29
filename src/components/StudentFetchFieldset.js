@@ -38,7 +38,7 @@ class StudentFetchFieldset extends Component {
     const loadingLogo = <img className="loading-icon" align="middle" height="20" src="img/loading.svg" alt="loading-icon" /> ;
 
     return (
-      <fieldset style={{ display: 'inline', maxWidth: '80px', padding: '6px 5px',}} className="student-info" dir="rtl" >
+      <fieldset style={{ display: 'inline', padding: '6px 5px',}} className="student-info" dir="rtl" >
         <legend>تعبئة تلقائية</legend>
           <form onSubmit={this.fetchUserInformation}>
           <table>

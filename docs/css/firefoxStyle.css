@@ -1,0 +1,14 @@
+@-moz-document url-prefix() {
+  .or-div {
+    top: -54px !important;
+  }
+
+  @media only screen and (max-device-width: 480px) {
+    .subjects-table {
+      width: 110% !important;
+      right: 5% !important;
+      position: relative !important;
+    }
+  }
+
+}

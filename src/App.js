@@ -68,9 +68,12 @@ class App extends Component {
         <Header isError={this.state.isError} errorMessage={this.state.errorMessage} />
         <div className="main-container" >
           {/* Student Information */}
-          <StudentFetchFieldset timeToHideError={TIME_TO_HIDE_ERROR} setState={(newState) => {this.setState(newState)}} state={this.state} fetchUserInformation={(e) => {this.fetchUserInformation(e)}} />
-          {orDiv}
-          <StudentInformationFieldset setState={(newState) => {this.setState(newState)}} state={this.state} />
+          <div className="student-input-div" >
+            <StudentFetchFieldset timeToHideError={TIME_TO_HIDE_ERROR} setState={(newState) => {this.setState(newState)}} state={this.state} fetchUserInformation={(e) => {this.fetchUserInformation(e)}} />
+            {orDiv}
+            <StudentInformationFieldset setState={(newState) => {this.setState(newState)}} state={this.state} />
+          </div>
+
 
           {/* Subjects Table */}
           <SubjectsTable setState={(newState) => {this.setState(newState)}} state={this.state} />
