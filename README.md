@@ -9,8 +9,8 @@ https://wadhahessam.github.io/ksu-gpa/
 
 ## Motivation 
 since there is no official GPA calculator for King Saud University and other 
-calculators out there has so many problems : 
-- require user to go and get his old points and hours and gpa.
+GPA calculators in the internet have so many problems like : 
+- requiring user to search for his old points and hours and gpa.
 - hard to use.
 - takes many steps and buttons to get the final result.
 - require scrolling up and down.
@@ -46,7 +46,7 @@ https://github.com/WadhahEssam/ksu-gpa-v1/
 
 ## What is added to the new version :
 - Rebuilt using React.js
-- Retrieving student information from the edugate.
+- Retrieving student information from the edugate website.
 - Add / Remove of subjects.
 - Saving the state in localStorage so application doesn't lose state after reloading.
 - Style changes.
