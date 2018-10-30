@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 
 const NUMBER_OF_DEFAULT_SUBJECTS = 5;
-const TIME_TO_HIDE_ERROR = 5000;
 
 class App extends Component {
   state = {
@@ -26,10 +25,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // check if there is data in the local storage
     const storageState = JSON.parse(localStorage.getItem("state"));
     if (storageState===null) {
-      // adding the default empty subjects
       let subjects = [];
       for (let i = 0; i < NUMBER_OF_DEFAULT_SUBJECTS; i++) {
         subjects.push({
@@ -69,11 +66,10 @@ class App extends Component {
         <div className="main-container" >
           {/* Student Information */}
           <div className="student-input-div" >
-            <StudentFetchFieldset timeToHideError={TIME_TO_HIDE_ERROR} setState={(newState) => {this.setState(newState)}} state={this.state} fetchUserInformation={(e) => {this.fetchUserInformation(e)}} />
+            <StudentFetchFieldset setState={(newState) => {this.setState(newState)}} state={this.state} fetchUserInformation={(e) => {this.fetchUserInformation(e)}} />
             {orDiv}
             <StudentInformationFieldset setState={(newState) => {this.setState(newState)}} state={this.state} />
           </div>
-
 
           {/* Subjects Table */}
           <SubjectsTable setState={(newState) => {this.setState(newState)}} state={this.state} />

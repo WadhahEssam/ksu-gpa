@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ENV from '../env';
 
+const TIME_TO_HIDE_ERROR = 5000;
+
 class StudentFetchFieldset extends Component {
 
   fetchUserInformation = async (e) => {
@@ -32,7 +34,7 @@ class StudentFetchFieldset extends Component {
       }
       setTimeout(() => {
         this.props.setState({isError:false});
-      }, this.props.timeToHideError)
+      }, TIME_TO_HIDE_ERROR)
     })
   }
 
