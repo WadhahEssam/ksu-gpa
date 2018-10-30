@@ -44,7 +44,7 @@ class StudentFetchFieldset extends Component {
     return (
       <fieldset style={{ display: 'inline', padding: '6px 5px',}} className="student-info" dir="rtl" >
         <legend>تعبئة تلقائية</legend>
-          <form onSubmit={this.fetchUserInformation}>
+        <form onSubmit={this.fetchUserInformation}>
           <table>
             <tbody>
               <tr>
@@ -75,8 +75,8 @@ class StudentFetchFieldset extends Component {
               </tr>
               <tr>
                 <td>
-                  <hr 
-                    className="fetch-button-horizontal-line"/><button 
+                  <hr className="fetch-button-horizontal-line"/>
+                  <button 
                     className="fetch-information-button" 
                     type="submit"
                   >
