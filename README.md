@@ -21,7 +21,7 @@ calculators out there has so many problems :
 there came the need for an application that addresses all the above problems.
 
 
-## Pictures
+## Preview
 ![alt text](https://github.com/WadhahEssam/ksu-gpa/blob/master/docs/img/screenshot.png)
 
 
