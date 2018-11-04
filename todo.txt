@@ -1,11 +1,7 @@
 * things to be added : 
 fix the favicon.ico
-adding animation for error div
-writing the read me file
 try to fix the style in safari mobiles
-maybe i need to tell the user why it is taking so long
 make the method butons with a darker collor if it is not chosen
-remove the phone number and remove the console.log in the api 
 
 * done :
 //making the fetch fields and button as a form 
@@ -19,3 +15,6 @@ remove the phone number and remove the console.log in the api
 //adding the F rate
 //adding the site to google search
 //put the server in digital ocean
+// writing the read me file
+// maybe i need to tell the user why it is taking so long ( don't need that since i made it faster ) 
+// remove the phone number and remove the console.log in the api 

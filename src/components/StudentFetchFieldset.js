@@ -16,6 +16,7 @@ class StudentFetchFieldset extends Component {
         throw new Error("Somthing Wrong Happened");
       }
       const { gpa, hours, points, subjects } = result.data;
+      // console.log(result.data);
       this.props.setState({
         gpa,
         hours: parseInt(hours),
