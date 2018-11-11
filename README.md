@@ -4,7 +4,7 @@ very simple and light gpa calculator for King Saud University students,
 
 
 ## Try it 
-https://wadhahessam.github.io/ksu-gpa/
+https://wadhahessam.github.io/gpa-ksu
 
 
 ## Motivation 
@@ -22,7 +22,7 @@ there came the need for an application that addresses all the above problems.
 
 
 ## Preview
-![alt text](https://github.com/WadhahEssam/ksu-gpa/blob/master/docs/img/screenshot.png)
+![alt text](https://github.com/WadhahEssam/gpa-ksu/blob/master/docs/img/screenshot.png)
 
 
 ## Technologies Uesd 
