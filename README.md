@@ -4,8 +4,7 @@ very simple and light gpa calculator for King Saud University students,
 
 
 ## Try it 
-https://wadhahessam.github.io/gpa-ksu
-
+https://wadhahessam.github.io/ksu-gpa
 
 ## Motivation 
 since there is no official GPA calculator for King Saud University and other 
