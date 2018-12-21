@@ -63,7 +63,7 @@ class SubjectsTable extends Component {
           <td>
             <select 
               disabled={!subject.checked}
-              defaultValue={subject.grade} 
+              value={subject.grade}
               onChange={(e) => {
                 let subjects = cloneDeep(this.props.state.subjects);
                 subjects[index].grade = e.target.value;
